@@ -37,7 +37,7 @@ class Rollbar {
     _telemetry.add(telemetry);
   }
 
-  Future publishReport({@required String message, String uuid = null}) async {
+  Future publishReport({@required Map message, String uuid = null}) async {
     var packageInfo = await PackageInfo.fromPlatform();
 
     var clientData = <String, dynamic>{
@@ -77,9 +77,9 @@ class Rollbar {
         telemetry: telemetry,
         message: message,
         clientData: clientData,
-        person: person, 
+        person: person,
         environment: environment,
-        uuid: uuid  
+        uuid: uuid
     );
   }
 
