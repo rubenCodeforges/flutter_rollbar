@@ -37,7 +37,7 @@ class Rollbar {
     _telemetry.add(telemetry);
   }
 
-  Future publishReport({@required String message}) async {
+  Future publishReport({@required String message, String uuid = null}) async {
     var packageInfo = await PackageInfo.fromPlatform();
 
     var clientData = <String, dynamic>{
@@ -73,7 +73,14 @@ class Rollbar {
         'app_name': packageInfo.appName,
       };
     }
-    return _api.sendReport(accessToken: accessToken, telemetry: telemetry, message: message, clientData: clientData, person: person, environment: environment);
+    return _api.sendReport(accessToken: accessToken,
+        telemetry: telemetry,
+        message: message,
+        clientData: clientData,
+        person: person, 
+        environment: environment,
+        uuid: uuid  
+    );
   }
 
   void dispose() {}
