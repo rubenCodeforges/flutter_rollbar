@@ -8,8 +8,7 @@ import 'package:meta/meta.dart';
 
 class RollbarApi {
   final http.Client _client = http.Client();
-  
-  /// @message should contain body as a key and value
+
   Future<http.Response> sendReport({
     @required String accessToken,
     @required Map message,
@@ -25,7 +24,9 @@ class RollbarApi {
       'framework': 'flutter',
       'language': 'dart',
       'body': {
-        'message': message,
+        'message': {
+          'body': message,
+        },
         'telemetry': telemetry.map((item) => item.toJson()).toList(),
       },
       'person': person?.toJson(),
