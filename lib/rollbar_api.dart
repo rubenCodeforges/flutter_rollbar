@@ -11,7 +11,7 @@ class RollbarApi {
 
   Future<http.Response> sendReport({
     @required String accessToken,
-    @required Map message,
+    @required String message,
     @required List<RollbarTelemetry> telemetry,
     Map clientData,
     RollbarPerson person,
