@@ -11,7 +11,7 @@ class RollbarApi {
 
   Future<http.Response> sendReport({
     @required String accessToken,
-    @required String message,
+    @required Map message,
     @required List<RollbarTelemetry> telemetry,
     Map clientData,
     RollbarPerson person,
@@ -39,7 +39,7 @@ class RollbarApi {
     if (uuid != null) {
       dataPayload['uuid'] = uuid;
     }
-    print(dataPayload);
+    print(dataPayload['uuid']);
     return _client.post(
       'https://api.rollbar.com/api/1/item/',
       body: json.encode(
